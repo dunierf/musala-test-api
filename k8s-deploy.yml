@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateways-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: gateways-api
+  template:
+    metadata:
+      labels:
+        component: gateways-api
+    spec:
+      containers:
+        - name: gateways-api
+          image: hub.docker.com/gateways-api:{BUILD_NO}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_DATABASE
+              value: {DB_DATABASE}
+            - name: DB_PASSWORD
+              value: {DB_PASSWORD}
+            - name: DB_SERVER
+              value: {DB_SERVER}
+            - name: DB_USER
+              value: {DB_USER}
