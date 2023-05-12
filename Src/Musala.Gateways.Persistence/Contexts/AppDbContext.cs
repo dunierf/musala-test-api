@@ -1,5 +1,7 @@
 ﻿using Musala.Gateways.Domain.Entities.Sample;
 using Microsoft.EntityFrameworkCore;
+using Musala.Gateways.Domain.Entities.Gateways;
+using Musala.Gateways.Domain.Entities.Devices;
 
 namespace Musala.Gateways.Persistence.Contexts
 {
@@ -16,5 +18,14 @@ namespace Musala.Gateways.Persistence.Contexts
         }        
         public DbSet<Todo> Todos { set; get; }
         public DbSet<TodoItem> TodoItems { set; get; }
+
+
+
+        public DbSet<Gateway> Gateways { get; set; }
+
+        public DbSet<DeviceStatus> DeviceStatus { get; set; }
+
+        public DbSet<Device> Devices { get; set; }
+
     }
 }
