@@ -15,6 +15,7 @@ namespace Musala.Gateways.Application.Features.DeviceStatus.Queries.GetDeviceSta
         private ILogger logger;
         private AppDbContext db;
         private IMapper mapper;
+
         public GetDeviceStatusQueryHandler(ILogger<GetTodoQueryHandler> logger, AppDbContext db, IMapper mapper)
         {
             this.logger = logger;
