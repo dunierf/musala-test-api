@@ -26,7 +26,7 @@ namespace Musala.Gateways.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GatewayDto))]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
-            return Ok(await Mediator.Send(new GetGatewayQuery() { }));
+            return Ok(await Mediator.Send(new GetGatewayQuery() { Id = id }));
         }
         
         [HttpPost]

@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Musala.Gateways.Application.Common.Exceptions;
 using Musala.Gateways.Application.Features.Devices.Queries.GetAllDevices;
+using Musala.Gateways.Domain.Entities.Devices;
 using Musala.Gateways.Persistence.Contexts;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Musala.Gateways.Application.Features.Devices.Queries.GetDevice
             var entity = await db.Devices.FindAsync(request.Id);
 
             if (entity == null)
-                throw new NotFoundException(nameof(DeviceDto), request.Id);
+                throw new NotFoundException(nameof(Device), request.Id);
 
             return mapper.Map<DeviceDto>(entity);
         }
