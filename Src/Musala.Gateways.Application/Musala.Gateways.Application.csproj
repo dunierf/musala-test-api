@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Musala.Gateways.Persistence\Musala.Gateways.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Devices\Commands\" />
+  </ItemGroup>
+
 </Project>
