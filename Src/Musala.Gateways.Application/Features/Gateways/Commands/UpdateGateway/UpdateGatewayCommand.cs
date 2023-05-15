@@ -8,6 +8,7 @@ namespace Musala.Gateways.Application.Features.Gateways.Commands.UpdateGateway
     {
         public int Id { get; set; }
         public string Name { set; get; }
+        public string SerialNumber { set; get; }
         public string IpV4Address { set; get; }
     }
 }
