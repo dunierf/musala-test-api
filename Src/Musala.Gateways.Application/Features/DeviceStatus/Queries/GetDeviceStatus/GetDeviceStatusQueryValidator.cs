@@ -7,10 +7,8 @@ namespace Musala.Gateways.Application.Features.DeviceStatus.Queries.GetDeviceSta
         public GetDeviceStatusQueryValidator()
         {
             RuleFor(c => c.Id)
-                .NotNull()
                 .NotEmpty()
-                .NotEqual(0)
-                .WithMessage("Id is required");
+                .WithMessage("Id is required, integer number greater than zero");
         }
     }
 }

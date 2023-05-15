@@ -8,10 +8,8 @@ namespace Musala.Gateways.Application.Features.Gateways.Queries.GetGateway
         public GetGatewayQueryValidator()
         {
             RuleFor(c => c.Id)
-                .NotNull()
                 .NotEmpty()
-                .NotEqual(0)
-                .WithMessage("Id is required");
+                .WithMessage("Id is required, integer number greater than zero");
         }
     }
 }

@@ -8,8 +8,6 @@ namespace Musala.Gateways.Application.Features.DeviceStatus.Commands.CreateDevic
         {
             RuleFor(c => c.Name)
                 .NotEmpty()
-                .NotNull()
-                .NotEqual("")
                 .WithMessage("Name is required");
         }
     }

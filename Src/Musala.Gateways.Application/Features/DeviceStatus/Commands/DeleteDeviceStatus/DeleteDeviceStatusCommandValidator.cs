@@ -8,9 +8,7 @@ namespace Musala.Gateways.Application.Features.DeviceStatus.Commands.DeleteDevic
         {
             RuleFor(c => c.Id)
                 .NotEmpty()
-                .NotNull()
-                .NotEqual(0)
-                .WithMessage("Id is required");
+                .WithMessage("Id is required, integer number greater than zero");
         }
     }
 }
