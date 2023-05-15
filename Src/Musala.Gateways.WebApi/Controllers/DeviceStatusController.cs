@@ -33,7 +33,7 @@ namespace Musala.Gateways.WebApi.Controllers
 
         // POST api/<DeviceStatusController>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeviceStatusDto))]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(DeviceStatusDto))]
         public async Task<IActionResult> Post([FromBody] CreateDeviceStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -49,7 +49,7 @@ namespace Musala.Gateways.WebApi.Controllers
 
         // DELETE api/<DeviceStatusController>/5
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
             await Mediator.Send(new DeleteDeviceStatusCommand() { Id = id });
