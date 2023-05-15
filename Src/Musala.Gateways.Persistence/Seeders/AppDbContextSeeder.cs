@@ -19,7 +19,7 @@ namespace Musala.Gateways.Persistence.Seeders
         {
             if (!db.DeviceStatus.Any())
             {
-                db.DeviceStatus.AddRange(
+                db.DeviceStatus.AddRangeAsync(
                     new DeviceStatus {
                         Name = "Online",
                         CreatedBy = "system",

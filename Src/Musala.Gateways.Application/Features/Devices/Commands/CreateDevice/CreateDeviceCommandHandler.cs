@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Musala.Gateways.Application.Features.Devices.Queries.GetAllDevices;
+using Musala.Gateways.Application.Features.Devices.Queries.GetDevice;
 using Musala.Gateways.Domain.Entities.Devices;
 using Musala.Gateways.Persistence.Contexts;
 using System;
@@ -15,12 +16,14 @@ namespace Musala.Gateways.Application.Features.Devices.Commands.CreateDevice
         private IMapper mapper;
         private AppDbContext db;
         private ILogger logger;
+        private IMediator mediator;
 
-        public CreateDeviceCommandHandler(IMapper mapper, AppDbContext db, ILogger<CreateDeviceCommandHandler> logger)
+        public CreateDeviceCommandHandler(IMapper mapper, AppDbContext db, ILogger<CreateDeviceCommandHandler> logger, IMediator mediator)
         {
             this.mapper = mapper;
             this.db = db;
             this.logger = logger;
+            this.mediator = mediator;
         }
 
         public async Task<DeviceDto> Handle(CreateDeviceCommand request, CancellationToken cancellationToken)
@@ -41,7 +44,7 @@ namespace Musala.Gateways.Application.Features.Devices.Commands.CreateDevice
             await db.Devices.AddAsync(entity);
             await db.SaveChangesAsync(cancellationToken);
 
-            return mapper.Map<DeviceDto>(entity);
+            return await this.mediator.Send(new GetDeviceQuery() { Id = entity.Id });
         }
     }
 }

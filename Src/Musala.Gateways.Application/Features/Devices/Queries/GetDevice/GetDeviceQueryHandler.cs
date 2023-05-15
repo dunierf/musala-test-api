@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Musala.Gateways.Application.Common.Exceptions;
 using Musala.Gateways.Application.Features.Devices.Queries.GetAllDevices;
 using Musala.Gateways.Domain.Entities.Devices;
 using Musala.Gateways.Persistence.Contexts;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +27,11 @@ namespace Musala.Gateways.Application.Features.Devices.Queries.GetDevice
 
         public async Task<DeviceDto> Handle(GetDeviceQuery request, CancellationToken cancellationToken)
         {
-            var entity = await db.Devices.FindAsync(request.Id);
+            var entity = await db.Devices
+                .Include(c => c.Status)
+                .Include(c => c.Gateway)
+                .Where(c => c.Id == request.Id)
+                .FirstOrDefaultAsync();
 
             if (entity == null)
                 throw new NotFoundException(nameof(Device), request.Id);
