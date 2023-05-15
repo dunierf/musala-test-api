@@ -8,25 +8,18 @@ namespace Musala.Gateways.Application.Features.Devices.Commands.CreateDevice
         {
             RuleFor(c => c.UId)
                 .NotEmpty()
-                .NotNull()
                 .WithMessage("UId is required");
 
             RuleFor(c => c.Vendor)
                 .NotEmpty()
-                .NotNull()
-                .NotEqual("")
                 .WithMessage("Name is required");
 
             RuleFor(c => c.StatusId)
                 .NotEmpty()
-                .NotNull()
-                .NotEqual(0)
-                .WithMessage("SatusId is required");
+                .WithMessage("Status Id is required");
 
             RuleFor(c => c.GatewayId)
                 .NotEmpty()
-                .NotNull()
-                .NotEqual(0)
                 .WithMessage("GatewayId is required");
         }
     }

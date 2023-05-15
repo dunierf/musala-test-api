@@ -29,6 +29,7 @@ namespace Musala.Gateways.Application.Features.Gateways.Commands.CreateGateway
             {
                 Name = request.Name,
                 IpV4Address = request.IpV4Address,
+                SerialNumber = request.SerialNumber,
                 CreatedBy = "system",
                 CreatedDate = DateTime.UtcNow,
                 LastModifiedBy = "system",

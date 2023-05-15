@@ -32,6 +32,7 @@ namespace Musala.Gateways.Application.Features.Gateways.Commands.UpdateGateway
                 throw new NotFoundException(nameof(Gateway), request.Id);
 
             entity.Name = request.Name;
+            entity.SerialNumber = request.SerialNumber;
             entity.IpV4Address = request.IpV4Address;
             entity.ModifiedDate = DateTime.UtcNow;
             entity.LastModifiedBy = "system";

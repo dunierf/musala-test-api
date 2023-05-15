@@ -20,7 +20,7 @@ namespace Musala.Gateways.Application.Features.Devices.Commands.UpdateDevice
 
             RuleFor(c => c.StatusId)
                 .NotEmpty()
-                .WithMessage("SatusId is required");
+                .WithMessage("Status Id is required");
 
             RuleFor(c => c.GatewayId)
                 .NotEmpty()

@@ -3,14 +3,10 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Musala.Gateways.Application.Common.Exceptions;
 using Musala.Gateways.Application.Features.Devices.Queries.GetAllDevices;
-using Musala.Gateways.Domain.Entities.Gateways;
-using Musala.Gateways.Domain.Enums;
 using Musala.Gateways.Persistence.Contexts;
-using System.Numerics;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Musala.Gateways.Application.Features.TodoItems.Queries.GetAllTodoItems;
 
 namespace Musala.Gateways.Application.Features.Devices.Commands.UpdateDevice
 {
