@@ -15,39 +15,34 @@ namespace Musala.Gateways.WebApi.Controllers
     [ApiController]
     public class DeviceStatusController : BaseController
     {
-        // GET: api/<DeviceStatusController>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DeviceStatusDto>))]
         public async Task<IActionResult> Get()
         {
             return Ok(await Mediator.Send(new GetAllDeviceStatusQuery() { }));
         }
-
-        // GET api/<DeviceStatusController>/5
+        
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeviceStatusDto))]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
             return Ok(await Mediator.Send(new GetDeviceStatusQuery() { Id = id }));
         }
-
-        // POST api/<DeviceStatusController>
+        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(DeviceStatusDto))]
         public async Task<IActionResult> Post([FromBody] CreateDeviceStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
-
-        // PUT api/<DeviceStatusController>/5
+        
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeviceStatusDto))]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateDeviceStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
-
-        // DELETE api/<DeviceStatusController>/5
+        
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
