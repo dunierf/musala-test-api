@@ -1,4 +1,8 @@
-﻿using Musala.Gateways.Persistence.Contexts;
+﻿using Azure.Core;
+using Musala.Gateways.Domain.Entities.Devices;
+using Musala.Gateways.Persistence.Contexts;
+using System;
+using System.Linq;
 
 namespace Musala.Gateways.Persistence.Seeders
 {
@@ -7,10 +11,37 @@ namespace Musala.Gateways.Persistence.Seeders
 
         public void SeedEverything(AppDbContext db)
         { 
-            db.Database.EnsureCreated();    
+            db.Database.EnsureCreated();
+            SeedDeviceStatus(db);
         }
 
-        // Add your own seed methods 
+        private void SeedDeviceStatus(AppDbContext db)
+        {
+            if (!db.DeviceStatus.Any())
+            {
+                db.DeviceStatus.AddRangeAsync(
+                    new DeviceStatus {
+                        Name = "Online",
+                        CreatedBy = "system",
+                        CreatedDate = DateTime.UtcNow,
+                        LastModifiedBy = "system",
+                        ModifiedDate = DateTime.UtcNow,
+                        IsActive = true
+                    },
+
+                    new DeviceStatus {
+                        Name = "Offline",
+                        CreatedBy = "system",
+                        CreatedDate = DateTime.UtcNow,
+                        LastModifiedBy = "system",
+                        ModifiedDate = DateTime.UtcNow,
+                        IsActive = true
+                    }
+                );
+
+                db.SaveChangesAsync();
+            }
+        }
 
     }
 }
